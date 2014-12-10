@@ -3,7 +3,10 @@
   
   var NAME = '[_private]',
     options = {};
-    
+  
+  /*
+   *  Get Extension Settings from Chrome Storage Local
+   */
   chrome.storage.local.get('type', function(data) {
     options.type = data || null;
   });
@@ -13,7 +16,10 @@
   chrome.storage.local.get('verbose', function(data) {
     options.verbose = data || null;
   });
-  
+ 
+  /*
+   *  Wrapper for chrome.windows.create(), configured for opening Incognito windows
+   */
   function open_incognito(opts) {
     if (!opts) {
       throw new Error(NAME + ' open_incognito requires an options object');
@@ -22,9 +28,9 @@
     var url = opts.url || {},
       type = opts.type || "popup",
       focus = opts.focus || true;
-
-    if ((typeof url === String || typeof url === Array) === false) {
-      throw new Error(NAME + 'window.openIncognito requires a string or an array of urls');
+    
+    if ((typeof url === String || typeof url === Array) === true) {
+      throw new Error(NAME + ' window.openIncognito requires a string or an array of urls');
     }
     if (options.verbose) {
       console.info(NAME + ' Opening Incognito Window');
@@ -32,7 +38,7 @@
 
     chrome.windows.create({
       url: url,
-      focus: focus,
+      focused: focus,
       type: type,
       incognito: true
     });
@@ -59,6 +65,7 @@
       target = element.getAttribute('target'),
       href = element.getAttribute('href');
 
+    console.log(element, target, href);
     if (target && target === '_private') {
 
       element.addEventListener('click', function(event) {
@@ -71,25 +78,22 @@
     }
   }
 
+  //=====================================================
+
   /*
    *  Settings window
    */
   var settings = {
-    type: document.getElmentById('type'),
-    focus: document.getElmentById('focus'),
-    verbose: document.getElmentById('verbose'),
-    save: document.getElmentById('save')
-  }, changed = false;
+    type: document.getElementById('type'),
+    focus: document.getElementById('focus'),
+    verbose: document.getElementById('verbose'),
+    save: document.getElementById('save')
+  }, 
+  changed = false;
 
   function updateChanged() { 
     changed = !changed; 
-    if (changed) {
-      settings.save.setAttribute('disabled', '');
-      settings.save.classList.add('disabled');
-    }
-    else {
-      settings.save.removeAttribute('disabled');
-    }
+    settings.save.classList.toggle('pure-button-disabled');
   }
 
   settings.save.addEventListener('click', function(event) {
@@ -112,7 +116,5 @@
   settings.type.addEventListener('change', updateChanged, false);
   settings.focus.addEventListener('change', updateChanged, false);
   settings.verbose.addEventListener('change', updateChanged, false);
-
-
 
 }(window, document));

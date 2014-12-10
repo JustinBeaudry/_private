@@ -8,7 +8,7 @@
     "storage"
   ],
   "browser_action": {
-    "default_icon": "assets/a_private_64.png",
-    "default_popup": "a_private.html"
+    "default_icon": "assets/logo_64.png",
+    "default_popup": "private_a.html"
   }
 }
