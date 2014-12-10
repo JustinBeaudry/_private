@@ -1,4 +1,4 @@
-# [![_private](https://raw.githubusercontent.com/JustinBeaudry/_private/chrome/assets/_private_64.png)](https://github.com/JustinBeaudry/_private) _private
+# [![_private](https://raw.githubusercontent.com/JustinBeaudry/_private/chrome/assets/a_private_64.png)](https://github.com/JustinBeaudry/_private) _private
 
 A multi-platform method of allowing an HTML &lt;a&gt; to use target='\_private' to launch a private browsing session.
 

@@ -2,13 +2,13 @@
   "manifest_version": 2,
   "name": "_private",
   "description": "A multi-platform method of allowing an HTML <a> to use target='_private' to launch a private browsing session.",
-  "version": "1.0",
+  "version": "0.0.1",
   "permissions": [
     "tabs",
     "storage"
   ],
   "browser_action": {
-    "default_icon": "assets/_private_64.png",
-    "default_popup": "_private.html"
+    "default_icon": "assets/a_private_64.png",
+    "default_popup": "a_private.html"
   }
 }

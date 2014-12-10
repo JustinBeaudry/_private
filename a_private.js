@@ -1,7 +1,7 @@
 (function(window, document){
   'use strict';
   
-  var NAME = '[_private]';
+  var NAME = '[a_private]';
   var options = chrome.storage.local.get('_private:settings') || {};
 
   function open_incognito(opts) {
