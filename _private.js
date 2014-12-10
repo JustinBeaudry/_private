@@ -13,7 +13,7 @@
     var type = opts.type || "popup";
     var focus = opts.focus || true;
 
-    if (url === undefined || url === null || url === Object || url === Boolean || url === Function) {
+    if ((typeof url === String || typeof url === Array) === false) {
       throw new Error('window.openIncognito requires a string or an array of urls');
     }
     if (options.verbose) {
