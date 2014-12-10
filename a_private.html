@@ -2,39 +2,34 @@
 <head>
   <meta charset="utf-8"/>
   <title>_private</title>
-  <link rel="stylesheet" type="text/css" href="_private.css" />
-  <script src="_private.js"></script>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <script src="a_private.js"></script>
 </head>
 <body>
-  <main>
-    <header>
+  <main class="pure-g">
+    <header class="pure-u">
       <h1>_private</h1>
     </header>
-    <hr />
-    <section>
+    <section class="pure-u">
       <h2>settings</h2>
-      <form>
-        <div>
-          <label for="type">type</type>
-          <p>set the type of window to <pre>"normal", "popup", "panel", or "detached_panel"</pre></p>
-          <input type="text" name="type" id="type" placeholder="type"/>
-        </div>
-        <div>
-          <label for="focus">focus</label>
-          <p>sets the focus <pre>true | false</pre></p>
-          <input type="text" name="focus" id="focus" placeholder="focus"/>
-        </div>
-        <div>
-          <label for="verbose">verbose</label>
-          <p>log when window.openIncognito is called.</p>
-          <input type="text" name="verbose" id="verbose" placeholder="verbose"/>
-        </div>
+      <form class="pure-form-aligned">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="type">type</type>
+            <input type="text" name="type" id="type" placeholder="type"/>
+          </div>
+          <div class="pure-control-group">
+            <label for="focus">focus</label>
+            <input type="text" name="focus" id="focus" placeholder="focus"/>
+          </div>
+          <div class="pure-control-group">
+            <label for="verbose">verbose</label>
+            <input type="text" name="verbose" id="verbose" placeholder="verbose"/>
+          </div>
+        </fieldset>
+        <button type="submit" class="pure-button pure-button-primary" id="save">Save</button>
       </form> 
     </section>
-    <hr />
-    <footer>
-      <p>Justin Beaudry. 2014.</p>
-    </footer>
   </main> 
 </body>
 </html>
