@@ -16,5 +16,5 @@ Coming Soon
 
 ---
 
-Private Session logo designed by [Dan Hetteix](http://thenounproject.com/DHETTEIX) from the [Noun Project](http://thenounproject.com/) :: Creative Commons – Attribution (CC BY 3.0)
+_private logo designed by [Dan Hetteix](http://thenounproject.com/DHETTEIX) from the [Noun Project](http://thenounproject.com/) :: Creative Commons – Attribution (CC BY 3.0)
 
