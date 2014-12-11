@@ -6,28 +6,39 @@
   <link rel="stylesheet" href="private_a.css">
   <script src="private_a.js"></script>
 </head>
-<body>
+<body class="_private">
   <main class="pure-g">
     <header class="pure-u margin-0-auto">
-      <img class="pure-img" src="https://raw.githubusercontent.com/JustinBeaudry/_private/master/assets/logo_64.png"/>
-      <h2>settings</h2>
+      <img class="pure-img" src="https://raw.githubusercontent.com/JustinBeaudry/_private/master/assets/logo_64.png"/>      
+      <h3>Settings</h3>
     </header>
+    <section class="pure-u margin-15">
+      <small>
+        <p>Global settings for all <code>&lt;a&gt;</code> elements with the <code>target="_private"</code> attribute.</p>
+        <i>Note that all settings can be overrided by using the data-private attributes.</i>
+      </small>
+    </section>
     <section class="pure-u">
       <form class="pure-form pure-form-aligned">
-        <div class="pure-control-group">
-          <input type="text" name="type" id="type" placeholder="type"/>
-        </div>
-        <div class="pure-control-group">
-          <input type="text" name="focus" id="focus" placeholder="focus"/>
-        </div>
-        <div class="pure-control-group">
-          <input type="text" name="verbose" id="verbose" placeholder="verbose"/>
-        </div>
+        <fieldset>
+          <div class="pure-control-group">
+            <input type="text" name="type" id="type" placeholder="type"/>
+          </div>
+          <div class="pure-control-group">
+            <input type="text" name="focus" id="focus" placeholder="focus"/>
+          </div>
+          <div class="pure-control-group">
+            <input type="text" name="verbose" id="verbose" placeholder="verbose"/>
+          </div>
+        </fieldset>
         <div class="pure-controls">
           <button type="submit" class="pure-button pure-button-primary pure-button-disabled" id="save">Save</button>
         </div>
       </form> 
     </section>
+    <footer class="pure-u">
+      <small><a href="http://github.com/JustinBeaudry/_private">_private</a> logo designed by <a href="http://thenounproject.com/DHETTEIX">Dan Hetteix</a> from the <a href="http://thenounproject.com/">Noun Project</a> :: Creative Commons – Attribution (CC BY 3.0)</small>
+    </footer>
   </main> 
 </body>
 </html>

@@ -1,4 +1,8 @@
-.text-center {
+
+/*
+ *  Utility Classes
+ */
+._private .text-center {
   text-align: center;
 }
 
@@ -6,10 +10,27 @@
   margin: 0 auto;
 }
 
-header img {
+/*
+ *  Settings Styles
+ */
+
+header {
   margin-top: 10px;
 }
 
-section form {
-  margin: 5px 15px 15px 15px;
+section,
+footer {
+  margin: 0 15px 15px 15px;
+}
+
+a,
+a:active,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: #4E4E4E;
+}
+
+a:hover {
+  color: #A4A4A4;
 }
