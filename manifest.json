@@ -10,5 +10,10 @@
   "browser_action": {
     "default_icon": "assets/logo_64.png",
     "default_popup": "private_a.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"]
+    }  
+  ]
 }

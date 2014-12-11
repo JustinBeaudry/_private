@@ -3,19 +3,6 @@
   
   var NAME = '[_private]',
     options = {};
-  
-  /*
-   *  Get Extension Settings from Chrome Storage Local
-   */
-  chrome.storage.local.get('type', function(data) {
-    options.type = data || null;
-  });
-  chrome.storage.local.get('focus', function(data) {
-    options.focus = data || null;
-  });
-  chrome.storage.local.get('verbose', function(data) {
-    options.verbose = data || null;
-  });
  
   /*
    *  Wrapper for chrome.windows.create(), configured for opening Incognito windows
@@ -57,64 +44,85 @@
     };
   }
 
-  var a_elements = document.getElementsByTagName('a');
+  window.onload = function onWindowLoad() {
+    /*
+     *  Get Extension Settings from Chrome Storage Local
+     */
+    chrome.storage.local.get('enabled', function(data) {
+      options.enabled = data || true;
+    });
+    chrome.storage.local.get('type', function(data) {
+      options.type = data || null;
+    });
+    chrome.storage.local.get('focus', function(data) {
+      options.focus = data || null;
+    });
+    chrome.storage.local.get('verbose', function(data) {
+      options.verbose = data || null;
+    });
 
-  for (var i = 0; i < a_elements.length; i += 1) {
+    /*
+     *  Get all <a>'s from users page
+     */
+    var a_elements = document.getElementsByTagName('a');
 
-    var element = a_elements[i],
-      target = element.getAttribute('target'),
-      href = element.getAttribute('href');
+    for (var i = 0; i < a_elements.length; i += 1) {
 
-    console.log(element, target, href);
-    if (target && target === '_private') {
+      var element = a_elements[i],
+        target = element.getAttribute('target'),
+        href = element.getAttribute('href');
 
-      element.addEventListener('click', function(event) {
-        event.stopPropagation();
-        event.preventDefault();
+      console.log(element, target, href);
+      if (target && target === '_private') {
 
-        window.openIncognito(href, (options.type || null), (options.focus || null));
+        element.addEventListener('click', function(event) {
+          event.stopPropagation();
+          event.preventDefault();
 
-      }, false);
+          window.openIncognito(href, (options.type || null), (options.focus || null));
+
+        }, false);
+      }
     }
-  }
 
-  //=====================================================
-
-  /*
-   *  Settings window
-   */
-  var settings = {
-    type: document.getElementById('type'),
-    focus: document.getElementById('focus'),
-    verbose: document.getElementById('verbose'),
-    save: document.getElementById('save')
-  }, 
-  changed = false;
-
-  function updateChanged() { 
-    changed = !changed; 
-    settings.save.classList.toggle('pure-button-disabled');
-  }
-
-  settings.save.addEventListener('click', function(event) {
-    var type = settings.type.value,
-      focus = settings.focus.value,
-      verbose = settings.verbose.value;
-   
-    if (type) {
-      chrome.storage.local.set({'type': type});
-    }
-    if (focus) {
-      chrome.storage.local.set({'focus': focus});
-    }
-    if (verbose) {
-      chrome.storage.local.set({'verbose': verbose});
-    }
+    //=====================================================
     
-  }, false);
+    /*
+     *  Settings window
+     */
+    var enabled = document.getElementById('enabled'),
+      type = document.getElementById('type'),
+      focus = document.getElementById('focus'),
+      verbose = document.getElementById('verbose'),
+      save = document.getElementById('save'),
+      changed = false;
 
-  settings.type.addEventListener('change', updateChanged, false);
-  settings.focus.addEventListener('change', updateChanged, false);
-  settings.verbose.addEventListener('change', updateChanged, false);
+    function updateChanged(event) {
+      changed = !changed;
+      console.info('Setting Changed!', event);
+      save.classList.toggle('pure-button-disabled');
+    }
 
+    save.addEventListener('click', function(event) {
+      if (enabled.value) {
+        chrome.storage.local.set({'enabled': enabled.value});
+      }
+      if (type.value) {
+        chrome.storage.local.set({'type': type.value});
+      }
+      if (focus.value) {
+        chrome.storage.local.set({'focus': focus.value});
+      }
+      if (verbose.value) {
+        chrome.storage.local.set({'verbose': verbose.value});
+      }
+      
+    }, false);
+
+    enabled.addEventListener('change', updateChanged, false);
+    type.addEventListener('change', updateChanged, false);
+    focus.addEventListener('change', updateChanged, false);
+    verbose.addEventListener('change', updateChanged, false);
+    
+  }
 }(window, document));

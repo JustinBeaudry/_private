@@ -10,7 +10,6 @@
   <main class="pure-g">
     <header class="pure-u margin-0-auto">
       <img class="pure-img" src="https://raw.githubusercontent.com/JustinBeaudry/_private/master/assets/logo_64.png"/>      
-      <h3>Settings</h3>
     </header>
     <section class="pure-u margin-15">
       <small>
@@ -18,22 +17,25 @@
         <i>Note that all settings can be overrided by using the data-private attributes.</i>
       </small>
     </section>
-    <section class="pure-u">
-      <form class="pure-form pure-form-aligned">
+    <section class="pure-g">
+      <form class="pure-form">
         <fieldset>
           <div class="pure-control-group">
-            <input type="text" name="type" id="type" placeholder="type"/>
+            <select>
+              <option value="normal">normal</option>
+              <option value="popup">popup</option>
+              <option value="panel">panel</option>
+              <option value="detached_panel">detached_panel</option>
+            </select>
           </div>
           <div class="pure-control-group">
-            <input type="text" name="focus" id="focus" placeholder="focus"/>
+            <input type="text" name="focus" id="focus" class="form-control" placeholder="focus"/>
           </div>
           <div class="pure-control-group">
-            <input type="text" name="verbose" id="verbose" placeholder="verbose"/>
+            <input type="text" name="verbose" id="verbose" class="form-control" placeholder="verbose"/>
           </div>
         </fieldset>
-        <div class="pure-controls">
-          <button type="submit" class="pure-button pure-button-primary pure-button-disabled" id="save">Save</button>
-        </div>
+        <button type="submit" class="pure-button pure-button-primary pure-button-disabled" id="save">Save</button>
       </form> 
     </section>
     <footer class="pure-u">
